@@ -2,42 +2,40 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Riddles  for My Love ❤️</title>
+<title>Riddles for My Love ❤️</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  background: linear-gradient(to right, #ff4e75, #ff9a9e);
   color: white;
   text-align: center;
-  overflow: hidden;
 }
 
+/* Slide container */
 .slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   display: none;
+  height: 100vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 20px;
 }
 
+/* Active slide */
 .active {
   display: flex;
-  animation: fade 1s ease-in-out;
 }
 
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
+/* Text styling */
+h1, h2, h3 {
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
 
-h1, h2 {
-  margin: 10px;
-}
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.5em; }
 
 .emoji {
   font-size: 40px;
@@ -88,7 +86,7 @@ h1, h2 {
 
 <div class="slide">
   <h1>No riddles here…</h1>
-  <h2>I just love you endlessly ❤️💓💞</h2>
+  <h2>I just love you Sangu endlessly ❤️💓💞</h2>
   <div class="emoji">🍑🤩🥳</div>
 </div>
 
@@ -98,11 +96,12 @@ let index = 0;
 
 function showNextSlide() {
   slides[index].classList.remove("active");
-  index = (index + 1) % slides.length;
+  index++;
+  if (index >= slides.length) index = 0;
   slides[index].classList.add("active");
 }
 
-setInterval(showNextSlide, 4000); // change slide every 4 sec
+setInterval(showNextSlide, 3000); // 3 sec per slide
 </script>
 
 </body>
