@@ -2,142 +2,107 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dinner Date 🍑🍆💦</title>
+<title>Riddles for My Love ❤️</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(to right, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
   overflow: hidden;
 }
 
-/* Popup */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
+.slide {
+  position: absolute;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  padding: 20px;
 }
 
-.popup-content {
-  background: white;
-  padding: 30px;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 0 20px pink;
-  position: relative;
+.active {
+  display: flex;
+  animation: fade 1s ease-in-out;
 }
 
-h2 {
-  color: #e91e63;
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
-/* Buttons */
-button {
-  padding: 10px 20px;
+h1, h2 {
   margin: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
 }
 
-.yes {
-  background: #ff4081;
-  color: white;
-}
-
-.no {
-  background: #ccc;
-  position: absolute;
-}
-
-/* Floating hearts */
-.heart {
-  position: absolute;
-  color: red;
-  animation: float 5s linear infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(100vh); opacity: 1; }
-  100% { transform: translateY(-10vh); opacity: 0; }
+.emoji {
+  font-size: 40px;
+  margin-top: 20px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="popup">
-  <div class="popup-content">
-    <h2>Hey will you go on a candlelight dinner date with me? 🍑🍆💦?</h2>
-    <button class="yes" onclick="sayYes()">Yes 🍆</button>
-    <button class="no" id="noBtn">No 😜</button>
-  </div>
+<div class="slide active">
+  <h1>Hey Love… 💞</h1>
+  <h2>I have something fun for you 🤩🥳</h2>
+  <div class="emoji">🍑💓</div>
 </div>
 
-<!-- Optional music -->
-<audio autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+<div class="slide">
+  <h2>I’m not a flower, but I bloom when you’re near…</h2>
+  <h3>What am I? 🤔</h3>
+</div>
+
+<div class="slide">
+  <h2>👉 My love for you 💞💓</h2>
+</div>
+
+<div class="slide">
+  <h2>I have no voice, but I speak your name…</h2>
+  <h3>What am I?</h3>
+</div>
+
+<div class="slide">
+  <h2>👉 My thoughts about you 💭💞</h2>
+</div>
+
+<div class="slide">
+  <h2>I go up but never come down when you’re around…</h2>
+  <h3>What am I?</h3>
+</div>
+
+<div class="slide">
+  <h2>👉 My smile 😊💓</h2>
+</div>
+
+<div class="slide">
+  <h2>I’m a question with only one answer…</h2>
+  <h2>And that answer is YOU 💞🥳</h2>
+</div>
+
+<div class="slide">
+  <h1>No riddles here…</h1>
+  <h2>I just love you endlessly ❤️💓💞</h2>
+  <div class="emoji">🍑🤩🥳</div>
+</div>
 
 <script>
-// Move "No" button randomly
-const noBtn = document.getElementById("noBtn");
+let slides = document.querySelectorAll(".slide");
+let index = 0;
 
-noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-});
-
-// Yes button action
-function sayYes() {
-  document.querySelector(".popup-content").innerHTML =
-    "<h2>Yay!!! 🍑🍆💦</h2><p>Lets have a f***k night today 🍑🍆💦</p>";
-  startConfetti();
+function showNextSlide() {
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
 }
 
-// Floating hearts
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "🍑";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
-  document.body.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 5000);
-}, 300);
-
-// Confetti effect
-function startConfetti() {
-  for (let i = 0; i < 100; i++) {
-    let conf = document.createElement("div");
-    conf.style.position = "absolute";
-    conf.style.width = "10px";
-    conf.style.height = "10px";
-    conf.style.background = "hsl(" + Math.random()*360 + ",100%,50%)";
-    conf.style.top = "50%";
-    conf.style.left = "50%";
-    conf.style.transform = `translate(-50%, -50%)`;
-    conf.style.animation = "fall 2s linear forwards";
-    document.body.appendChild(conf);
-
-    conf.animate([
-      { transform: "translate(0,0)" },
-      { transform: `translate(${Math.random()*500-250}px, ${Math.random()*500}px)` }
-    ], { duration: 2000 });
-
-    setTimeout(() => conf.remove(), 2000);
-  }
-}
+setInterval(showNextSlide, 4000); // change slide every 4 sec
 </script>
 
 </body>
